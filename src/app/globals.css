@@ -23,3 +23,9 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
 }
+
+.gauge-container[data-alert] {
+  box-shadow: 0 0 24px rgba(239, 68, 68, 0.45);
+  outline: 2.5px solid #ef4444;
+  outline-offset: -2.5px;
+}
