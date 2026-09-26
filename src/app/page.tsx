@@ -11,7 +11,7 @@ import { playAlertSound, disposeAlertContext } from "@/lib/alertSound";
 const ALERT_THRESHOLD_KEY = "deciben:alertThreshold";
 const ALERT_ENABLED_KEY = "deciben:alertEnabled";
 const DEFAULT_THRESHOLD = 70;
-const ALERT_COOLDOWN_MS = 3000;
+const ALERT_COOLDOWN_MS = 4000;
 
 function readStored<T>(key: string, fallback: T, parse: (v: string) => T): T {
   if (typeof window === "undefined") return fallback;
@@ -52,7 +52,7 @@ export default function Home() {
     const el = gaugeRef.current;
     if (el) {
       el.setAttribute("data-alert", "");
-      const timer = setTimeout(() => el.removeAttribute("data-alert"), 800);
+      const timer = setTimeout(() => el.removeAttribute("data-alert"), 1800);
       return () => {
         clearTimeout(timer);
         el.removeAttribute("data-alert");
@@ -205,7 +205,7 @@ export default function Home() {
         )}
         {alertEnabled && (
           <p className="mt-2 text-[11px] text-slate-400 dark:text-slate-500">
-            Phát âm thanh cảnh báo khi mức ồn vượt ngưỡng. Nghỉ {ALERT_COOLDOWN_MS / 1000}s giữa các lần phát.
+            Phát còi báo động khi mức ồn vượt ngưỡng. Nghỉ {ALERT_COOLDOWN_MS / 1000}s giữa các lần phát.
           </p>
         )}
       </div>
